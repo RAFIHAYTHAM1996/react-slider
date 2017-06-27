@@ -93,10 +93,15 @@ export default class Slider extends React.Component {
 
     //Set Position for Dot
     if(pos >= 0 && pos <= this.incrementalPos * this.range){
-      this.currentValue = Math.round(pos / this.incrementalPos);
-      if(roundToClosest){
-        pos = this.incrementalPos * Math.round(pos / this.incrementalPos);
+      if(!this.props.exactValues){
+        this.currentValue = Math.round(pos / this.incrementalPos);
+        if(roundToClosest){
+          pos = this.incrementalPos * this.currentValue;
+        }
+      } else{
+        this.currentValue = ((pos / this.PathRect.width) * this.range).toFixed(this.props.decimalPlaces);
       }
+
       this.setState({translateX: "translateX(" + (pos - this.DotRadius) + "px)"});
     }
     else if(pos < 0){
@@ -130,12 +135,16 @@ Slider.propTypes = {
   min: PropTypes.number,
   max: PropTypes.number,
   onScrub: PropTypes.func,
-  onRelease: PropTypes.func
+  onRelease: PropTypes.func,
+  exactValues: PropTypes.bool,
+  decimalPlaces: PropTypes.number
 }
 
 Slider.defaultProps = {
   min: 0,
   max: 10,
   onScrub: f => f,
-  onRelease: f => f
+  onRelease: f => f,
+  exactValues: false,
+  decimalPlaces: 2
 }

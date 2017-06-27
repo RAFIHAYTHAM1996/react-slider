@@ -1,0 +1,42 @@
+.Slider {
+  display: block;
+  background-color: #333;
+  width: 100%;
+  height: 4%;
+  padding-left: 2%;
+  padding-right: 2%;
+  min-height: 50px;
+  border-radius: 25px;
+
+  .Components{
+    margin: auto;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .Path{
+    margin: auto;
+    height: 0.2vw;
+    min-height: 3px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    align-content: center;
+  }
+
+  .Dot{
+    height: 1.5vw;
+    width: 1.5vw;
+    min-height: 30px;
+    min-width: 30px;
+    background-color: #555;
+    border-radius: 100%;
+    align-self: center;
+    cursor: pointer;
+    transform-origin: center;
+  }
+
+}
